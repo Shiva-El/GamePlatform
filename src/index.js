@@ -4,14 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+const root = ReactDOM.createRoot(document.getElementById('root'));  //define root (entry point) object
+root.render(   //This render() method tells React which React component should be injected into that root entry point. In most React apps, this is a component called App.
   <React.StrictMode>
-    <App />
+    <App />  {/* it's the root component of the React app. It's the main component that is rendered to the DOM */} 
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
