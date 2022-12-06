@@ -1,10 +1,10 @@
 import './App.css';
+import LyricsGame from './components/lyrics/LyricsGame';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-      </header>
+      <LyricsGame />
     </div>
   );
 }
