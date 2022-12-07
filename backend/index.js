@@ -1,18 +1,17 @@
-require('dotenv').config();
 const mongoose = require('mongoose');
-const userModel = require('./models')
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const validator = require('validator');
+const bcrypt = require('bcrypt');
+require('dotenv').config();
+
+const userModel = require('./models')
 
 const PORT = process.env.PORT || 3001; //Must be different from the port of the React app
 
 const app = express();
 
-const validator = require('validator');
-const bcrypt = require('bcrypt');
-const e = require("express");
 const saltRounds = 10;
 
 app.use(cors()); // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
