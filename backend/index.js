@@ -17,7 +17,7 @@ const saltRounds = 10;
 app.use(cors()); // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 
 mongoose.connect("mongodb+srv://mongouser:" + process.env.MONGODB_PWD +
-  "@cluster0.zpoe9et.mongodb.net/?retryWrites=true&w=majority",
+  "@cluster0.zpoe9et.mongodb.net/TheBeansArcade?retryWrites=true&w=majority",
   {
     useNewUrlParser   : true,
     useUnifiedTopology: true,
