@@ -27,7 +27,7 @@ return(
                     <table style={{width: "100%"}}>
                         <tr>
                             <td style={{width: "49%", padding: "1%"}}>
-                                <h2 style={{textAlign: "left", textDecoration: "underline"}}> Finish the Lyrics </h2>
+                            <h2 style={{textAlign: "left", textDecorationLine: "underline"}}>Finish the Lyrics</h2><Link to="/lyrics">Play!</Link>
                                 <p style={{textAlign: "left", marginLeft: "2%"}}>
                                     Description
                                 </p>
