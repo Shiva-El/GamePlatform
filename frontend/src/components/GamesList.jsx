@@ -28,7 +28,7 @@ return(
                     <table style={{width: "100%"}}>
                         <tr>
                             <td style={{width: "49%", padding: "1%"}}>
-                            <h2 style={{textAlign: "left", textDecorationLine: "underline"}}>Finish the Lyrics</h2><Link to="/lyrics">Play!</Link>
+                            <h2 style={{textAlign: "left", textDecorationLine: "underline"}}>Finish the Lyrics</h2><Link to="/lyrics"><Button style={{color: "darkRed", textAlign: "center", border: "2px solid red", borderRadius: "5px", boxShadow: "2px 2px 15px 5px #EDC28F, 0px 0px 15px 5px red inset", padding: "10px", fontWeight: "bold", fontSize: "130%"}}>Play!</Button></Link>
                                 <p style={{textAlign: "left", marginLeft: "2%"}}>
                                     Description
                                 </p>
@@ -43,7 +43,7 @@ return(
                     <table style={{width: "100%"}}>
                         <tr>
                             <td style={{width: "49%", padding: "1%"}}>
-                                <h2 style={{textAlign: "left", textDecorationLine: "underline"}}>Sand Sweeper</h2><Link to="/minesweeper">Play!</Link>
+                                <h2 style={{textAlign: "left", textDecorationLine: "underline"}}>Sand Sweeper</h2><Link to="/minesweeper"><Button style={{color: "#8c670b", textAlign: "center", border: "2px solid yellow", borderRadius: "5px", boxShadow: "2px 2px 15px 5px #EDC28F, 0px 0px 15px 5px yellow inset", padding: "10px", fontWeight: "bold", fontSize: "130%"}}>Play!</Button></Link>
                                 <p style={{textAlign: "left", marginLeft: "2%"}}>
                                     Left click spaces to dig for treasure! <br />
                                     Be careful not to click on any snake spaces, or it's game over. <br />
@@ -54,7 +54,7 @@ return(
                                 </p>
                             </td>
                             <td style={{width: "49%", padding: "1%"}}>
-                                <img src={SandsweeperScreenshot} alt="Screenshot" />
+                                <img src={SandsweeperScreenshot} alt="Screenshot" style={{width: "90%"}} />
                             </td>
                         </tr>
                     </table>
@@ -63,7 +63,7 @@ return(
                     <table style={{width: "100%"}}>
                         <tr>
                             <td style={{width: "49%", padding: "1%"}}>
-                                <h2 style={{textAlign: "left", textDecoration: "underline"}}> Flying Bean </h2>
+                                <h2 style={{textAlign: "left", textDecoration: "underline"}}> Flying Bean </h2><Link to="/"><Button style={{color: "SaddleBrown", textAlign: "center", border: "2px solid #EDC28F", borderRadius: "5px", boxShadow: "2px 2px 15px 5px #EDC28F, 0px 0px 15px 5px #EDC28F inset", padding: "10px", fontWeight: "bold", fontSize: "130%"}}>Play!</Button></Link>
                                 <p style={{textAlign: "left", marginLeft: "2%"}}>
                                     Description
                                 </p>
@@ -78,7 +78,7 @@ return(
                     <table style={{width: "100%"}}>
                         <tr>
                             <td style={{width: "49%", padding: "1%"}}>
-                                <h2 style={{textAlign: "left", textDecoration: "underline"}}> Memory Game </h2>
+                                <h2 style={{textAlign: "left", textDecoration: "underline"}}> Memory Game </h2><Link to="/"><Button style={{color: "Indigo", textAlign: "center", border: "2px solid #bc13fe", borderRadius: "5px", boxShadow: "2px 2px 15px 5px #EDC28F, 0px 0px 15px 5px #bc13fe inset", padding: "10px", fontWeight: "bold", fontSize: "130%"}}>Play!</Button></Link>
                                 <p style={{textAlign: "left", marginLeft: "2%"}}>
                                     Description
                                 </p>
