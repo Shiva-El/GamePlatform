@@ -5,6 +5,7 @@ import Scores from "./Scores";
 import { useState } from "react";
 import Grid from "@mui/material/Grid";
 import { makeStyles } from '@mui/styles';
+import Header from "../Header.jsx";
 
 const useStyles = makeStyles({
     grid:{
@@ -50,8 +51,9 @@ function LyricsGame(props) {
 
   const classes = useStyles(props);
   return (
-    
-    <Grid container spacing={2} className={classes.grid}>
+    <div>
+    <Header />
+    <Grid container spacing={2} className={classes.grid} style={{width: "96%", marginLeft: "2%", marginBottom: "2%"}}>
       <Grid item xs={12}></Grid>
       <Grid item xs={8} className={classes.grids}>
         <div></div>
@@ -79,6 +81,7 @@ function LyricsGame(props) {
       </Grid>
       <Grid item xs={6} className={classes.grids}></Grid>
     </Grid>
+    </div>
   );
 }
 export default LyricsGame;
