@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import {Route, Routes} from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import UsernameContext from "./context/UsernameContext";
+import MemoryGame from "./components/MemoryGame/MemoryGame.js";
 
 function App() {
   const [username, setUsername] = useState(null);
@@ -23,6 +24,7 @@ function App() {
           </Route>
           <Route path="/minesweeper" element={<Board />} />
           <Route path="/lyrics" element={<LyricsGame />} />
+          <Route path="/memorygame" element={<MemoryGame />} />
         </Routes>
       </UsernameContext.Provider>
     </div>

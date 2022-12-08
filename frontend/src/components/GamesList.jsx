@@ -78,7 +78,7 @@ return(
                     <table style={{width: "100%"}}>
                         <tr>
                             <td style={{width: "49%", padding: "1%"}}>
-                                <h2 style={{textAlign: "left", textDecoration: "underline"}}> Memory Game </h2><Link to="/"><Button style={{color: "Indigo", textAlign: "center", border: "2px solid #bc13fe", borderRadius: "5px", boxShadow: "2px 2px 15px 5px #EDC28F, 0px 0px 15px 5px #bc13fe inset", padding: "10px", fontWeight: "bold", fontSize: "130%"}}>Play!</Button></Link>
+                                <h2 style={{textAlign: "left", textDecoration: "underline"}}> Memory Game </h2><Link to="/memorygame"><Button style={{color: "Indigo", textAlign: "center", border: "2px solid #bc13fe", borderRadius: "5px", boxShadow: "2px 2px 15px 5px #EDC28F, 0px 0px 15px 5px #bc13fe inset", padding: "10px", fontWeight: "bold", fontSize: "130%"}}>Play!</Button></Link>
                                 <p style={{textAlign: "left", marginLeft: "2%"}}>
                                     Description
                                 </p>
