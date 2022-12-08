@@ -1,9 +1,9 @@
 # Required Modules
 
-Material UI: npm install material-ui
-React Router: npm i react-router-dom
-Bootstrap: npm install react-bootstrap bootstrap
-Immer: npm install react-immer
+Material UI: npm install material-ui \
+React Router: npm i react-router-dom \
+Bootstrap: npm install react-bootstrap bootstrap \
+Immer: npm install react-immer \
 
 ## Available Scripts
 
