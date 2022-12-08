@@ -1,9 +1,11 @@
-# Required Modules
-
+# Required Modules for frontend
 Material UI: npm install material-ui \
 React Router: npm i react-router-dom \
 Bootstrap: npm install react-bootstrap bootstrap \
-Immer: npm install react-immer 
+Immer: npm install react-immer
+
+# Required Modules for backend
+Mongoose: npm i express body-parser cors mongoose dotenv 
 
 ## Available Scripts
 
