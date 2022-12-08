@@ -1,5 +1,5 @@
 import Button from "@mui/material/Button";
-import Cards from "./components/Cards";
+import Cards from "../components/MemoryGame/Cards";
 import React from "react";
 
 function MemoryGame() {

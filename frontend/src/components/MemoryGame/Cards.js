@@ -5,7 +5,6 @@ import HighScore from "./HighScore";
 
 function Cards() {
   const [moves, setMoves] = useState(0);
-  const [clearedCards, setClearedCards] = useState({});
 
   const [cards, setCards] = useState(
     [
@@ -116,13 +115,6 @@ function Cards() {
       alert("Card already selected");
     }
   };
-
-  /*const checkCompletion = () => {
-
-    if (Object.keys(clearedCards).length === uniqueCardsArray.length) {
-      setShowModal(true);
-    }
-  };*/
 
   const restart = () => {
     setMoves(0);
