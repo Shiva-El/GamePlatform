@@ -5,9 +5,151 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(0, 0, 0);
+  height: 100%;
+ 
+  margin: 0 auto;
+  padding: 0 auto;
+  -webkit-box-reflect: below 1px linear-gradient(transparent, #0004);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+
+h1, label, h2{
+  text-align: center;
+  color: #fff;
+    text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #bc13fe,
+      0 0 82px #bc13fe,
+      0 0 92px #bc13fe,
+      0 0 102px #bc13fe,
+      0 0 151px #bc13fe;
+
+}
+
+.container{
+  margin: 0 auto;
+  width: 90%;
+  height: 90%;
+  max-width: 18rem;
+  height: 15.25rem;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: .3rem;
+
+  
+}
+
+.card{
+  background-color: rgb(0, 0, 0);
+  border-radius: 5px;
+  animation: 2s hideCard linear;
+  box-shadow: 0 0 .2rem #fff,
+  0 0 .2rem #fff,
+  0 0 2rem #bc13fe,
+  0 0 0.8rem #bc13fe,
+  0 0 0.8rem #bc13fe,
+  inset 0 0 1.3rem #bc13fe; 
+
+}
+
+img{
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  /* transform: scale(0); */
+  opacity: 0;
+  animation: 2s hideImage linear;
+  
+}
+
+
+
+.card.active{
+  transform: rotateY(0);
+}
+
+.card.active img{
+  opacity: 1;
+}
+
+.unmatch{
+    background-color: rgb(240, 28, 28);
+    border-radius: 5px;
+    animation: 2s hideCard linear;
+}
+
+@keyframes hideCard {
+  0%, 70%{
+    transform: rotateX(0deg);
+    
+  }100%{
+    transform: rotateX(180deg);
+    
+  }
+}
+
+@keyframes hideImage {
+  0%, 84%{
+    opacity: 1;
+    
+  }85%{
+    opacity: 0;
+  }
+}
+
+.bold {
+  text-align: center;
+  color: #fff;
+    text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #bc13fe,
+      0 0 82px #bc13fe,
+      0 0 92px #bc13fe,
+      0 0 102px #bc13fe,
+      0 0 151px #bc13fe;
+}
+
+Button {
+  position: relative;
+  padding: 12px 36px;
+  margin: 10px 0;
+  color: #ffffff,;
+  font-size: 1.4em;
+  letter-spacing: 2px;
+  font-family: "Roboto";
+  cursor: pointer;
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+Button:hover {
+  background-color: #bc13fe;
+  color: #ffffff;
+  box-shadow:
+  0 0 7px #fff,
+  0 0 10px #fff,
+  0 0 21px #fff,
+  0 0 42px #bc13fe,
+  0 0 82px #bc13fe,
+  0 0 92px #bc13fe,
+  0 0 102px #bc13fe,
+  0 0 151px #bc13fe;
 }
