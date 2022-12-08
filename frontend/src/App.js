@@ -13,17 +13,17 @@ function App() {
   return (
     <div style={{border: "8px double #EDC28F", borderRadius: "3px", textAlign: "center", boxShadow: "2px 2px 15px 5px #EDC28F, 2px 2px 15px 5px #EDC28F inset"}}>
       <LoggedInContext.Provider value={loggedInValueAndSetterToProvide}>
-    <Routes>
-      <Route path="/" element={<Home />}>
-        if(!isLoggedIn){<Route index element={<LoginForm />} />}
-        {/*}
-        <Route path="signup" element={<Signup />} />
-        <Route path="userDash" element={<UserDash />} />
-        <Route path="adminDash" element={<AdminDash />} />*/}
-      </Route>
-      <Route path="/minesweeper" element={<Board />} />
-      <Route path="/lyrics" element={<LyricsGame />} />
-    </Routes>
+        <Routes>
+          <Route path="/" element={<Home />}>
+          {isLoggedIn ? <></> : <Route index element={<LoginForm />} />}
+          {/*
+          <Route path="signup" element={<Signup />} />
+          <Route path="userDash" element={<UserDash />} />
+          <Route path="adminDash" element={<AdminDash />} />*/}
+          </Route>
+          <Route path="/minesweeper" element={<Board />} />
+          <Route path="/lyrics" element={<LyricsGame />} />
+        </Routes>
       </LoggedInContext.Provider>
     </div>
   );
