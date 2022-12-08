@@ -10,6 +10,7 @@ import Button from 'react-bootstrap/Button';
 import flag from "../images/Flag.png";
 import nug from "../images/Gold Nug.png";
 import gotNug from "../images/GotNug.png";
+import SandsweeperScreenshot from "../images/SandSweeperScreenshot.png";
 
 function GamesList(){
 return(
@@ -53,7 +54,7 @@ return(
                                 </p>
                             </td>
                             <td style={{width: "49%", padding: "1%"}}>
-                                <img src="" alt="Screenshot" />
+                                <img src={SandsweeperScreenshot} alt="Screenshot" />
                             </td>
                         </tr>
                     </table>
