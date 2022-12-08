@@ -10,7 +10,7 @@ import Button from 'react-bootstrap/Button';
 import flag from "../images/Flag.png";
 import nug from "../images/Gold Nug.png";
 import gotNug from "../images/GotNug.png";
-import SandsweeperScreenshot from "../images/SandSweeperScreenshot.png";
+import SandsweeperScreenshot from "../images/SandSweeperScreenshot.JPG";
 
 function GamesList(){
 return(
