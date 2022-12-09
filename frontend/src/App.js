@@ -7,6 +7,7 @@ import LoginForm from "./components/LoginForm";
 import UsernameContext from "./context/UsernameContext";
 import MemoryGame from "./components/MemoryGame/MemoryGame.js";
 import UserDash from "./components/UserDash/UserDash";
+import Logout from "./components/Logout";
 
 function App() {
   const [username, setUsername] = useState(null);
@@ -17,7 +18,7 @@ function App() {
       <UsernameContext.Provider value={usernameValueAndSetterToProvide}>
         <Routes>
           <Route path="/" element={<Home />}>
-          {username ? <></> : <Route index element={<LoginForm />} />}
+          {username ? <Route index element={<Logout />} /> : <Route index element={<LoginForm />} />}
           <Route path="/userDash" element={<UserDash />} />
           {/*
           <Route path="signup" element={<Signup />} />
