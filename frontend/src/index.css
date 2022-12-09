@@ -109,9 +109,20 @@ code {
   text-transform: uppercase;
 }
 
-.button:hover {
+.button:hover, .adminbutton:hover{
   background-color: #bc13fe;
   color: #ffffff;
   box-shadow: 0 0 5px #bc13fe, 0 0 25px #bc13fe, 0 0 50px #bc13fe,
   0 0 200px #bc13fe;
+}
+
+.adminbutton {
+  position:relative;
+  color: black;
+  font-size: 1em;
+  letter-spacing: 2px;
+  font-family: "Roboto";
+  cursor: pointer;
+  display: inline-block;
+  text-transform: uppercase;
 }

@@ -6,7 +6,7 @@ import Header from "../Header.jsx";
 
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
-function App() {
+function MemoryGame() {
   return (
     <div>
       <h1 className="text">Memory Game</h1>
@@ -16,4 +16,4 @@ function App() {
 }
 
 
-export default App;
+export default MemoryGame;

@@ -20,9 +20,10 @@ function App() {
           <Route path="/" element={<Home />}>
           {username ? <Route index element={<Logout />} /> : <Route index element={<LoginForm />} />}
           <Route path="/userDash" element={<UserDash />} />
+          <Route path="/adminDash" element={<AdminDash />} />
           {/*
           <Route path="signup" element={<Signup />} />
-          <Route path="adminDash" element={<AdminDash />} />
+           
           */}
           </Route>
           <Route path="/minesweeper" element={<Board />} />

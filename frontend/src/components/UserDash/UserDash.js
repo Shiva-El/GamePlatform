@@ -5,7 +5,7 @@ import ChangeUsername from "./ChangeUsername";
 import ChangePassword from "./ChangePassword";
 import { Button } from "@mui/material";
 
-function App() {
+function UserDash() {
 
   return (
     <>
@@ -36,4 +36,4 @@ function App() {
   );
 }
 
-export default App;
+export default UserDash;
