@@ -71,7 +71,18 @@ app.post("/users/register", async (request, response) => {
       } else {
         const hashedPassword = await bcrypt.hash(password, saltRounds);
         console.log("Registering username " + username);
-        const userToSave = { username: username, password: hashedPassword };
+        const userToSave = { 
+          username: username, 
+          password: hashedPassword,
+          minesweeperScore: 0,
+          memoryScore: 0,
+          flyingBeanScore: 0,
+          lyrics: {
+            lastLyricId: 0,
+            correct: 0,
+            wrong: 0
+          }
+        };
         await userModel.create(userToSave);
         response.send({ success: true });
         return;
@@ -120,6 +131,31 @@ app.get("/lyrics/:userId", async (req, res) => {
   const lyric = await lyricModel.findOne({ lyricId: lyricId });
 
   res.send(lyric);
+});
+
+app.get("/users/:username/lyrics", async (req, res) => {
+  const username = req.params.username;
+  const user = await userModel.findOne({ username });
+  res.send(user?.lyrics);
+});
+
+app.patch("/users/:username/lyrics", async (req, res) => {
+  const username = req.params.username;
+  const lyrics = req.body;
+  const user = await userModel.findOne({ username });
+  user.lyrics = lyrics;
+  await user.save();
+  res.send('OK');
+});
+
+app.get("/lyrics/:lyricId", async (req, res) => {
+  const lyricId = req.params.lyricId;
+  const lyric = await lyricModel.findOne({ lyricId });
+  if (!lyric) {
+    res.sendStatus(404)
+  } else {
+    res.send(lyric);
+  }
 });
 
 //Scoreboard callback
