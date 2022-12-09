@@ -18,10 +18,6 @@ const UserSchema = new mongoose.Schema({
     type    : Number,
     required: true,
   },
-  lyricsScore: {
-    type    : Number,
-    required: true,
-  },
   memoryScore: {
     type    : Number,
     required: true,
