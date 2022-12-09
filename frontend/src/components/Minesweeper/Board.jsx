@@ -91,11 +91,6 @@ const [player, setPlayer] = useState([]);
             //Reveal clicked space
             Object.assign(draft[x][y], {isRevealed: true});
             
-            /*
-            if(draft[x][y].isEmpty){
-                showEmptyCells(setup.height, setup.width, x, y, draft); 
-            }
-            */
             //If the space has not been clicked before, add point
             if(!draft[x][y].isSnake && draft[x][y].isPoint){
                 setScore(score + 1);
