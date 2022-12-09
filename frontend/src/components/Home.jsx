@@ -10,7 +10,6 @@ import Button from 'react-bootstrap/Button';
 import Header from './Header';
 import HomeLogo from './HomeLogo';
 import GamesList from './GamesList';
-import Footer from './Footer';
 import UsernameContext from "../context/UsernameContext";
 
 
@@ -27,8 +26,8 @@ function Home() {
             </Row>
             <Row>
                 <Col style={{color: "white"}}>
-                    <Outlet />
                     <p>{username ? "Welcome " + username + "!" : "Please login!"}</p>
+                    <Outlet />
                 </Col>
             </Row>
             <Row>
