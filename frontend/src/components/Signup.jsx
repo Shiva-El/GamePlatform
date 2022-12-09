@@ -10,10 +10,6 @@ import HomeLogo from "./HomeLogo";
 function Signup() {
   const uRef = useRef();
   const pRef = useRef();
-  const miRef = useRef();
-  const meRef = useRef();
-  const lyRef = useRef();
-  const fbRef = useRef();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -52,32 +48,30 @@ function Signup() {
 }
 
   return (
+    <div>
     <form onSubmit={handleSubmit}>
-    <Container fluid style={{color: "white", width: "96%", display: "flex", paddingLeft: "2%"}}>
+    <Header />
+    <Container fluid style={{color: "white", width: "96%", display: "flex", paddingLeft: "2%", justifyContent: "center"}}>
       <Col>
-        <Row style={{width: "100%", justifyContent: "left"}}>
-            <Header />
-        </Row>
         <Row>
             <HomeLogo />
+            <h3 style={{textShadow: "1px 1px 25px white", textAlign: "center", textDecoration: "underline"}}> Sign Up</h3>
         </Row>
-    </Col>
-    <Col style={{color: "white", position: "relative", margin: "auto" }}>
         <Row>
           <label htmlFor="username">What will your username be?&emsp;</label>
           <input id="username" type="text" ref={uRef} required />
         </Row>
-        <br />
         <Row>
         <label htmlFor="password">What is your password?&emsp;</label>
         <input id="password" type="password" ref={pRef} required />
         </Row>
-        <Row style={{textAlign: "center", paddingTop: "20px"}}>
+        <Row style={{textAlign: "center", paddingTop: "10px"}}>
           <button type="submit" style={buttonStyle}>Sign up</button>
         </Row>
-      </Col>
+    </Col>
     </Container>
     </form>
+    </div>
   );
 }
 

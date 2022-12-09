@@ -1,8 +1,7 @@
 //Utility Imports
 import { React, useState } from "react";
-import { buildSnakeSpaces, buildNeighbours } from "../../utils";
 import produce from 'immer';
-import UsernameContext from "../../context/UsernameContext";
+import { buildSnakeSpaces, buildNeighbours } from "../../utils";
 //Image Imports
 import snek from "../../images/SnekB.png";
 import gotNug from "../../images/GotNug.png";

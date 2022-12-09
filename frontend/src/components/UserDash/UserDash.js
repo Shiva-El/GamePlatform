@@ -19,21 +19,21 @@ function UserDash() {
     <Container fluid style={{width: "98%", display: "flex", justifyContent: "center"}}>
       <Col>
         <Row>
-          <h1 className="text">&emsp;User Dashboard</h1>
+          <h1 className="text">User Dashboard</h1>
         </Row>
         <Row>
-          <h1 className="text">&emsp;Profile Picture</h1>
-          <label className="label">Upload Profile Picture:</label>
+          <h1 className="text">Profile Picture</h1>
+          <label className="label" style={{color: "white"}}>Upload Profile Picture: &emsp;</label>
           <Button className="button" variant="outlined">
             <input accept="image/*" multiple type="file" />
           </Button>
         </Row>
-        <Container>
+        <Container>{/*}
           <Col>
             <Row>
               <ChangeUsername />
             </Row>
-          </Col>
+  </Col>*/}
           <Col>
             <Row>
               &emsp;

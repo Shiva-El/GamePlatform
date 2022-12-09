@@ -1,10 +1,5 @@
 //Utility Imports
-import { React, useState, useEffect, Component } from "react";
-//Bootstrap Imports
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
+import { React, Component } from "react";
 //Image Imports
 import f1 from "../images/BeansPenultimate1.png";
 import f2 from "../images/BeansPenultimate2.png";

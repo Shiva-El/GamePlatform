@@ -29,7 +29,7 @@ function Home() {
     }
 
     function ExitSession(){
-            localStorage.removeItem("username");
+        localStorage.removeItem("username");
         setUsername(null);
         
     }
