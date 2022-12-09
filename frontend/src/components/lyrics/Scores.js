@@ -12,12 +12,12 @@ const useStyles = makeStyles({
 });
 
 function Scores(props) {
-  let { score } = props;
+  let { correct, wrong } = props;
   const classes = useStyles(props);
   return (
     <div>
-      <span style={{backgroundColor: 'green', color: 'white', fontSize: "2rem"}}>{score.correct}</span> {' '}
-      <span style={{backgroundColor: 'red', color: 'white', fontSize: "2rem"}}>{score.wrong}</span>
+      <span style={{backgroundColor: 'green', color: 'white', fontSize: "2rem"}}>{correct}</span> {' '}
+      <span style={{backgroundColor: 'red', color: 'white', fontSize: "2rem"}}>{wrong}</span>
     </div>
   );
 }

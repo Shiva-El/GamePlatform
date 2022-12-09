@@ -123,28 +123,29 @@ app.post("/users/login", async (request, response) => {
   response.send({ success: false });
 });
 
-app.get("/lyrics/:userId", async (req, res) => {
-  const userId = req.params.userId;
-  const user = await userModel.findOne({ username: userId });
-  const lastLyricId = user.lyrics.lastLyricId ?? 0;
-  const lyricId = lastLyricId + 1;
-  const lyric = await lyricModel.findOne({ lyricId: lyricId });
-
-  res.send(lyric);
+app.get("/users/:username/lyrics", async (req, res) => {
+  const username = req.params.username;
+  const user = await userModel.findOne({ username });
+  res.send(user?.lyrics);
 });
 
-app.post("/lyrics/:userId", async (req, res) => {
-  const userId = req.params.userId;
-  const user = await userModel.findOne({ username: userId });
-  if (req.body.answer === "correct") {
-    user.lyrics.correct = (user.lyrics.correct ?? 0) + 1;
-  } else{
-    user.lyrics.wrong = (user.lyrics.wrong ?? 0) + 1;
-  }
-  user.lyrics.lastLyricId = (user.lyrics.lastLyricId ?? 0) + 1;
+app.patch("/users/:username/lyrics", async (req, res) => {
+  const username = req.params.username;
+  const lyrics = req.body;
+  const user = await userModel.findOne({ username });
+  user.lyrics = lyrics;
   await user.save();
-
   res.send('OK');
+});
+
+app.get("/lyrics/:lyricId", async (req, res) => {
+  const lyricId = req.params.lyricId;
+  const lyric = await lyricModel.findOne({ lyricId });
+  if (!lyric) {
+    res.sendStatus(404)
+  } else {
+    res.send(lyric);
+  }
 });
 
 //Scoreboard callback

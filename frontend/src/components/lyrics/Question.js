@@ -12,7 +12,6 @@ const useStyles = makeStyles({
 
 function Question(props) {
   const { lyric, choices, onOptionClicked } = props;
-  console.log(choices);
   const classes = useStyles(props);
 
   return (
