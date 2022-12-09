@@ -1,10 +1,9 @@
-import Button from "@mui/material/Button";
+
 import "../../App.css";
 import Cards from "./Cards";
 import React from "react";
-import Header from "../Header.jsx";
+import Header from "../Header";
 
-import { BrowserRouter as Router, Link } from "react-router-dom";
 
 function MemoryGame() {
   return (
