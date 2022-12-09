@@ -129,8 +129,18 @@ app.get('/leaderboard', async (req, res) => {
   res.send(users);
   });
 
+/* An API get request using URL path parameters
+to /users/:username */
+app.get("/leaderboard/:username", async (req, res) => {
+  const username = req.params.username;
+  const user = await userModel.findOne({
+  username: username });
+  res.send(user);
+  });
+
+
 //Minesweeper score callback
-app.patch("/users/:username/minesweeperScore", async (req,
+app.patch("/leaderboard/:username/minesweeperScore", async (req,
   res) => {
   const username = req.params.username;
   const minesweeperScore = req.body.minesweeperScore;
@@ -140,6 +150,8 @@ app.patch("/users/:username/minesweeperScore", async (req,
   console.log("modified: " + results.modifiedCount);
   res.send(results);
   });
+
+
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}!`);

@@ -135,10 +135,12 @@ const [gameStatus, setGameStatus] = useState("Dig to unearth gold nuggets! Caref
     function SaveScore(){
         const username = JSON.parse(localStorage.getItem('username'));
         console.log({username}.username);
-        fetch("http://localhost:3001/users/"+{username}.username, 
+        let savedScore = {score}.score + 1;
+        console.log({savedScore}.savedScore);
+        fetch("http://localhost:3001/leaderboard/"+{username}.username+"/minesweeperScore", 
             {method: "PATCH",
             body: JSON.stringify({
-                minesweeperScore: {score}
+                minesweeperScore: {savedScore}.savedScore
             }),
             headers: {
                 "Content-type": "application/json;charset=UTF-8",
@@ -146,7 +148,7 @@ const [gameStatus, setGameStatus] = useState("Dig to unearth gold nuggets! Caref
             })
         .then((data) => data.json())
         .then((json) =>
-        alert(JSON.stringify(json)));
+        JSON.stringify(json));
     }
 
 

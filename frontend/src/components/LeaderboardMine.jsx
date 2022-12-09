@@ -33,7 +33,7 @@ function Leaderboard() {
                             {user.username} 
                         </th>
                         <td style={{ textAlign: "left", borderBottom: "1px solid sienna"}}>
-                            &emsp;{user.minesweeper}
+                            &emsp;{user.minesweeperScore}
                         </td>
                     </tr>
                 )
