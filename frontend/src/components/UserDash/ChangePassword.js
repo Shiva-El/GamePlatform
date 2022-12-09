@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import Button from "@mui/material/Button";
+import username from "../Home";
 
 function ChangePassword() {
   const passwordRef = useRef();
@@ -7,9 +8,10 @@ function ChangePassword() {
   const handleSubmit = (event) => {
     event.preventDefault(); // prevent page reload
 
-    fetch("http://localhost:3001/users/test123/password", {
+    fetch("http://localhost:3001/users/password", {
       method: "PATCH",
       body: JSON.stringify({
+        username: username,
         password: newpasswordRef.current.value,
       }),
       headers: {

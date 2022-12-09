@@ -151,6 +151,17 @@ app.patch("/leaderboard/:username/minesweeperScore", async (req,
   res.send(results);
   });
 
+//UPDATE PASSWORD
+app.patch("/users/:username/password", async (req,
+  res) => {
+  const username = req.params.username;
+  const password = req.body.password;
+  const results = await userModel.updateOne({
+  username: username }, { password: password });
+  console.log("matched: " + results.matchedCount);
+  console.log("modified: " + results.modifiedCount);
+  res.send(results);
+  });
 
 
 app.listen(PORT, () => {
