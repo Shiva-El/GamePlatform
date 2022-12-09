@@ -1,35 +1,53 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema({
   username: {
-    type    : String,
+    type: String,
     required: true,
   },
   password: {
-    type    : String,
-    required: true,
-  },
-  minesweeper: {
-    type    : Number,
+    type: String,
     required: true,
   },
   lyrics: {
+    lastLyricId: Number,
+    correct: Number,
+    wrong: Number,
+  },
+  minesweeperScore: {
     type    : Number,
     required: true,
   },
-  memory: {
+  lyricsScore: {
     type    : Number,
     required: true,
   },
-  flyingBean: {
+  memoryScore: {
     type    : Number,
     required: true,
   },
-
+  flyingBeanScore: {
+    type    : Number,
+    required: true,
+  },
 });
 
+const LyricSchema = new mongoose.Schema({
+  lyricId: Number,
+  title: String,
+  singer: String,
+  lyric: String,
+  choices: [String],
+  correctChoice: Number,
+  video: {
+    url: String,
+    start: Number,
+    end: Number,
+  },
+});
 // Mongoose will assume there is a collection called the plural of this name
 // (i.e. 'users' in this case).
-const User = mongoose.model('User', UserSchema);
+const userModel = mongoose.model("User", UserSchema);
+const lyricModel = mongoose.model("Lyric", LyricSchema);
 
-module.exports = User;
+module.exports = {userModel, lyricModel};

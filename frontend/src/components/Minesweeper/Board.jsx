@@ -2,6 +2,7 @@
 import { React, useState } from "react";
 import { buildSnakeSpaces, buildNeighbours } from "../../utils";
 import produce from 'immer';
+import UsernameContext from "../../context/UsernameContext";
 //Image Imports
 import snek from "../../images/SnekB.png";
 import gotNug from "../../images/GotNug.png";
@@ -98,13 +99,16 @@ const [gameStatus, setGameStatus] = useState("Dig to unearth gold nuggets! Caref
             //If the space has not been clicked before, add point
             if(!draft[x][y].isSnake && draft[x][y].isPoint){
                 setScore(score + 1);
+                SaveScore();
             }
             //Remove the point from clicked space
             Object.assign(draft[x][y], {isPoint: false});
         });
         setGrid(updatedGrid);
+        
 
         if(updatedGrid[x][y].isSnake){
+            SaveScore();
             return setGameStatus("Death by Snake! Try a new digsite.");
         }
     };
@@ -127,7 +131,24 @@ const [gameStatus, setGameStatus] = useState("Dig to unearth gold nuggets! Caref
         setGrid(gameboard(setup));
     }
 
-   
+    //Save score
+    function SaveScore(){
+        const username = JSON.parse(localStorage.getItem('username'));
+        console.log({username}.username);
+        fetch("http://localhost:3001/users/"+{username}.username, 
+            {method: "PATCH",
+            body: JSON.stringify({
+                minesweeperScore: {score}
+            }),
+            headers: {
+                "Content-type": "application/json;charset=UTF-8",
+            },
+            })
+        .then((data) => data.json())
+        .then((json) =>
+        alert(JSON.stringify(json)));
+    }
+
 
     
 //UI
@@ -158,7 +179,7 @@ const [gameStatus, setGameStatus] = useState("Dig to unearth gold nuggets! Caref
                                 </div>
                             </td>
                             <td style={{width: "27%", textAlign: "center"}}>
-                                <Button variant="primary" onClick={(e)=> newDig(e, setup)} style={{color: "sienna", textAlign: "center", border: "2px solid yellow", borderRadius: "5px", boxShadow: "2px 2px 15px 5px #EDC28F, 0px 0px 15px 5px yellow inset", padding: "10px", fontWeight: "bold", fontSize: "130%"}}>New Digsite</Button>
+                                <Button variant="primary" onClick={(e)=> newDig(e, setup)}>New Digsite</Button>
                             </td>
                         </tr>
                     </table>

@@ -1,5 +1,5 @@
 //Utility Imports
-import {React} from "react";
+import React from "react";
 import {Outlet} from "react-router-dom";
 //Bootstrap Imports
 import Container from 'react-bootstrap/Container';
@@ -11,8 +11,12 @@ import Header from './Header';
 import HomeLogo from './HomeLogo';
 import GamesList from './GamesList';
 import Footer from './Footer';
+import UsernameContext from "../context/UsernameContext";
+
 
 function Home() {
+    const [username, setUsername] = React.useContext(UsernameContext);
+
     return(
         <Container>
             <Row>
@@ -24,7 +28,7 @@ function Home() {
             <Row>
                 <Col style={{color: "white"}}>
                     <Outlet />
-                    <p>Outlet Element: login, signup, userDash, adminDash</p>
+                    <p>{username ? "Welcome " + username + "!" : "Please login!"}</p>
                 </Col>
             </Row>
             <Row>

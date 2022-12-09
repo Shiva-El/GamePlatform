@@ -1,4 +1,4 @@
-import {React, setState, useState, useEffect} from "react";
+import {React, useState, useEffect} from "react";
 
 function Leaderboard() {
     const [users, setUsers] = useState([]);
@@ -12,8 +12,10 @@ function Leaderboard() {
         });
     };
     
-    //setInterval(() => {fetchUsers()}, 100000)
-    
+    useEffect(() => {
+        fetchUsers();
+    }, [])
+   
 
   return (
     <div style={{width: "98%", display: "flex", justifyContent: "center"}}>

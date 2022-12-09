@@ -1,12 +1,12 @@
 import React, {useRef} from 'react';
-import LoggedInContext from "../context/LoggedInContext";
+import UsernameContext from "../context/UsernameContext";
 
 
 function LoginForm() {
   const usernameRef = useRef();
   const passwordRef = useRef();
 
-  const [isLoggedIn, setIsLoggedIn] = React.useContext(LoggedInContext);
+  const [username, setUsername] = React.useContext(UsernameContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -27,7 +27,8 @@ function LoginForm() {
       .then((data) => data.json())
       .then((json) => {
         alert(JSON.stringify(json));
-        json.success ? setIsLoggedIn(true) : setIsLoggedIn(false);
+        json.success ? setUsername(username) : setUsername(null);
+        localStorage.setItem('username', JSON.stringify(username));
       });
   };
 
