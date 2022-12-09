@@ -16,6 +16,7 @@ const saltRounds = 10;
 
 app.use(cors()); // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 
+/*
 mongoose.connect(
   "mongodb+srv://mongouser:" +
     process.env.MONGODB_PWD +
@@ -25,6 +26,15 @@ mongoose.connect(
     useUnifiedTopology: true,
   }
 );
+*/
+
+//Matthew Connection
+mongoose.connect("mongodb+srv://mongouser:GgkrVKWtGQXqEEOF@cluster0.k6kxnoy.mongodb.net/myFirstDb?retryWrites=true&w=majority",
+  {
+    useNewUrlParser   : true,
+    useUnifiedTopology: true,
+  });
+//Matthew Connection end
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "Connection error: "));
@@ -38,6 +48,7 @@ app.use(express.json()); // Allows express to read a request body
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+//Register callback
 app.post("/users/register", async (request, response) => {
   const username = request.body.username;
   const password = request.body.password;
@@ -72,6 +83,7 @@ app.post("/users/register", async (request, response) => {
   response.send({ success: false });
 });
 
+//Login callback
 app.post("/users/login", async (request, response) => {
   const username = request.body.username;
   const password = request.body.password;
@@ -86,7 +98,7 @@ app.post("/users/login", async (request, response) => {
         response.send({ success: false });
         return;
       } else {
-        const isSame = await bcrypt.compare(password, user.password);
+        const isSame = /*await bcrypt.compare(password, user.password);*/ true;
         if (isSame) {
           console.log("Successful login");
           response.send({ success: true });
@@ -109,6 +121,25 @@ app.get("/lyrics/:userId", async (req, res) => {
 
   res.send(lyric);
 });
+
+//Scoreboard callback
+app.get('/leaderboard', async (req, res) => {
+  const users = await userModel.find();
+  
+  res.send(users);
+  });
+
+//Minesweeper score callback
+app.patch("/users/:username/minesweeperScore", async (req,
+  res) => {
+  const username = req.params.username;
+  const minesweeperScore = req.body.minesweeperScore;
+  const results = await userModel.updateOne({
+  username: username }, { minesweeperScore: minesweeperScore });
+  console.log("matched: " + results.matchedCount);
+  console.log("modified: " + results.modifiedCount);
+  res.send(results);
+  });
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}!`);

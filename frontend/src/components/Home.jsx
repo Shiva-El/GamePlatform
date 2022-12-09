@@ -29,7 +29,6 @@ function Home() {
                 <Col style={{color: "white"}}>
                     <Outlet />
                     <p>{username ? "Welcome " + username + "!" : "Please login!"}</p>
-                    <p>Outlet Element: login, signup, userDash, adminDash</p>
                 </Col>
             </Row>
             <Row>

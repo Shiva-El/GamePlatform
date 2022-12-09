@@ -6,6 +6,7 @@ import {Route, Routes} from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import UsernameContext from "./context/UsernameContext";
 import MemoryGame from "./components/MemoryGame/MemoryGame.js";
+import UserDash from "./components/UserDash/UserDash";
 
 function App() {
   const [username, setUsername] = useState(null);
@@ -17,12 +18,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}>
           {username ? <></> : <Route index element={<LoginForm />} />}
-          {<Route path="/userDash" element={<UserDash />} />
-          
-          /*
+          <Route path="/userDash" element={<UserDash />} />
+          {/*
           <Route path="signup" element={<Signup />} />
-          
-          <Route path="adminDash" element={<AdminDash />} />*/}
+          <Route path="adminDash" element={<AdminDash />} />
+          */}
           </Route>
           <Route path="/minesweeper" element={<Board />} />
           <Route path="/lyrics" element={<LyricsGame />} />

@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import Button from "@mui/material/Button";
 import Card from "./Card";
-import HighScore from "./HighScore";
+//import HighScore from "./HighScore";
 
 function Cards() {
   const [moves, setMoves] = useState(0);

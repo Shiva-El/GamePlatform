@@ -13,7 +13,23 @@ const UserSchema = new mongoose.Schema({
     lastLyricId: Number,
     correct: Number,
     wrong: Number,
-  }
+  },
+  minesweeperScore: {
+    type    : Number,
+    required: true,
+  },
+  lyricsScore: {
+    type    : Number,
+    required: true,
+  },
+  memoryScore: {
+    type    : Number,
+    required: true,
+  },
+  flyingBeanScore: {
+    type    : Number,
+    required: true,
+  },
 });
 
 const LyricSchema = new mongoose.Schema({

@@ -28,6 +28,7 @@ function LoginForm() {
       .then((json) => {
         alert(JSON.stringify(json));
         json.success ? setUsername(username) : setUsername(null);
+        localStorage.setItem('username', JSON.stringify(username));
       });
   };
 
