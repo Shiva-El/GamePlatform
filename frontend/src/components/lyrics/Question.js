@@ -11,26 +11,26 @@ const useStyles = makeStyles({
 });
 
 function Question(props) {
-  const { lyrics, options, onOptionClicked } = props;
+  const { lyric, choices, onOptionClicked } = props;
+  console.log(choices);
   const classes = useStyles(props);
 
   return (
     <div>
       <Typography sx={{ color: "white" }} variant="h4">
-        {lyrics}
+        {lyric}
       </Typography>
-      <p className={classes.lyrics}>{lyrics}</p>
       <Button variant="contained" sx={{color: "white"}} size="large" onClick={() => onOptionClicked(0)}>
-        {options[0]}
+        {choices[0]}
       </Button>
       <Button variant="contained" sx={{color: "white"}} size="large" onClick={() => onOptionClicked(1)}>
-        {options[1]}
+        {choices[1]}
       </Button>
       <Button variant="contained" sx={{color: "white"}} size="large" onClick={() => onOptionClicked(2)}>
-        {options[2]}
+        {choices[2]}
       </Button>
       <Button variant="contained" sx={{color: "white"}} size="large" onClick={() => onOptionClicked(3)}>
-        {options[3]}
+        {choices[3]}
       </Button>
     </div>
   );
