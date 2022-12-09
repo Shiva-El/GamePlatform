@@ -5,6 +5,7 @@ import HighScore from "./HighScore";
 
 function Cards() {
   const [moves, setMoves] = useState(0);
+  const [clearedCards, setClearedCards] = useState({});
 
   const [cards, setCards] = useState(
     [
@@ -94,11 +95,8 @@ function Cards() {
     }
   };
 
-
-
   const clickhandler = (index) => {
     if (index !== previousIndex.current) {
-
       if (cards[index].status === "active matched") {
         alert("already matched");
       } else {
@@ -118,10 +116,13 @@ function Cards() {
     }
   };
 
-
+  const gamecomplete = () => {
+    if (Object.keys(clearedCards).length === cards.length) {
+      alert("Game Finished");
+    }
+  };
 
   const restart = () => {
-  
     window.location.reload(false);
   };
 
@@ -140,12 +141,10 @@ function Cards() {
         })}
       </div>
 
-      <h2>Moves: {moves}</h2>
-
-      <h2>HighScore: {HighScore}</h2>
+      <h2 className="text">Moves: {moves}</h2>
 
       <div className="bold">
-        <Button onClick={restart} variant="outlined">
+        <Button onClick={restart} variant="outlined" className="button">
           Restart
         </Button>
       </div>
