@@ -21,8 +21,8 @@ function App() {
           <Route path="/userDash" element={<UserDash />} />
           {/*
           <Route path="signup" element={<Signup />} />
-          <Route path="userDash" element={<UserDash />} />
-          <Route path="adminDash" element={<AdminDash />} />*/}
+          <Route path="adminDash" element={<AdminDash />} />
+          */}
           </Route>
           <Route path="/minesweeper" element={<Board />} />
           <Route path="/lyrics" element={<LyricsGame />} />

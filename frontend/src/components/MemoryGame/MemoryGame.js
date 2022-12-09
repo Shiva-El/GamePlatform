@@ -9,7 +9,6 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 function App() {
   return (
     <div>
-      <Header />
       <h1 className="text">Memory Game</h1>
       <Cards />
     </div>
