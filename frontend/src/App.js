@@ -9,9 +9,13 @@ import Board from "./components/Minesweeper/Board.jsx";
 import LyricsGame from "./components/lyrics/LyricsGame.js";
 import MemoryGame from "./components/MemoryGame/MemoryGame.js";
 import UserDash from "./components/UserDash/UserDash";
-import Signup from "./components/Signup";
 import FlyingBean  from "./components/FlyingBean/FlyingBean.js";
 import About from "./components/About";
+import RequireAuth from "./components/RequireAuth";
+import Logout from "./components/Logout";
+import LoginButton from "./components/LoginButton";
+import LoginForm from "./components/LoginForm";
+import Signup from "./components/Signup";
 
 function App() {
   const [username, setUsername] = useState(null);
@@ -21,17 +25,19 @@ function App() {
     <div>
       <UsernameContext.Provider value={usernameValueAndSetterToProvide}>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/userDash" element={<UserDash />} />
-          <Route path="/sandsweeper" element={<Board />} />
-          <Route path="/lyrics" element={<LyricsGame />} />
-          <Route path="/memorygame" element={<MemoryGame />} />
-          <Route path="/flyingBean" element={<FlyingBean />} />
+        <Route path="/" element={<Home />}>
+            {username ? <Route index element={<Logout />} /> : <Route index element={<LoginButton />} />}
+            <Route path="/userDash" element={<UserDash />} />
+            
+            {/* <Route path="/adminDash" element={<AdminDash />} />*/}
+          </Route>
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/sandsweeper" element={<RequireAuth><Board /></RequireAuth>} />
+          <Route path="/lyrics" element={<RequireAuth><LyricsGame /></RequireAuth>} />
+          <Route path="/memorygame" element={<RequireAuth><MemoryGame /></RequireAuth>} />
+          <Route path="/flyingBean" element={<RequireAuth><FlyingBean /></RequireAuth>} />
           <Route path="/about" element={<About />} />
-          {/*
-          <Route path="adminDash" element={<AdminDash />} />
-          */}
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </UsernameContext.Provider>
     </div>

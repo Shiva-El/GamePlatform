@@ -109,7 +109,7 @@ app.post("/users/login", async (request, response) => {
         response.send({ success: false });
         return;
       } else {
-        const isSame = /*await bcrypt.compare(password, user.password); */true;
+        const isSame = await bcrypt.compare(password, user.password); //true;
         if (isSame) {
           console.log("Successful login");
           response.send({ success: true });

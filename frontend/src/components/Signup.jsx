@@ -32,7 +32,7 @@ function Signup() {
     })
       .then((data) => data.json())
       .then((json) => {
-        alert(JSON.stringify("Thank you for registering! " + json));
+        alert(JSON.stringify("Thank you for registering!"));
       });
   };
 

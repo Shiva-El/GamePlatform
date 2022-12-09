@@ -9,6 +9,7 @@ const useStyles = makeStyles({
     fontSize: "1.5rem",
     BackgroundColor: "white",
   },
+  label: {color: "white", textAlign: "center", padding: "10px", fontWeight: "bold", fontSize: "1.5rem"},
 });
 
 function Scores(props) {
@@ -16,8 +17,9 @@ function Scores(props) {
   const classes = useStyles(props);
   return (
     <div>
-      <span style={{backgroundColor: 'green', color: 'white', fontSize: "2rem"}}>{correct}</span> {' '}
-      <span style={{backgroundColor: 'red', color: 'white', fontSize: "2rem"}}>{wrong}</span>
+      <label className={classes.label}>Score: </label>
+      <span className={classes.label} style={{backgroundColor: 'green'}}>{correct}</span> {' '}
+      <span className={classes.label} style={{backgroundColor: 'red'}}>{wrong}</span>
     </div>
   );
 }

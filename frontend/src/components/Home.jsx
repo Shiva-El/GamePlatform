@@ -6,17 +6,24 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import { makeStyles} from '@mui/styles';
 //Component Imports
 import Header from './Header';
 import HomeLogo from './HomeLogo';
 import GamesList from './GamesList';
 import UsernameContext from "../context/UsernameContext";
 import LoginForm from './LoginForm';
+import LoginButton from "./LoginButton";
 
+const useStyles = makeStyles({
+    label: {color: "white", textAlign: "center", padding: "10px", fontWeight: "bold", fontSize: "130%"},
+  });
 
 function Home() {
     const [username, setUsername] = React.useContext(UsernameContext);
 
+    const classes = useStyles();
+    
     const buttonStyle = {
         color: "white", 
         textAlign: "center", 
@@ -43,25 +50,10 @@ function Home() {
                     <HomeLogo />
                 </Row>
                 <Row style={{width: "100%", color: "white"}}>
-                    <p>{username ? "Welcome " + username + "!" : "Please login!"}</p>
-                    {username ? 
-                    <Link to="/userDash">
-                        <Button style={buttonStyle}>
-                            Your Account
-                        </Button>
-                    </Link> : <></>}
-
-                    {username ? 
-                        <Button style={buttonStyle} onClick={ExitSession}>
-                            Logout
-                        </Button> : <></>
-                    }
-
-                    {username ? <></> : 
-                    <LoginForm />
-                    }
-                   
-                    <Outlet />
+                <Col>
+                    <label className={classes.label}>{username ? "Welcome " + username + "!" : "Please login!"}</label>
+                    <LoginButton />
+                </Col>
                 </Row>
                 <Row style={{width: "100%"}}>
                     <GamesList />
