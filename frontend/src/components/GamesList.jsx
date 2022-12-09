@@ -15,8 +15,7 @@ import SandsweeperScreenshot from "../images/SandSweeperScreenshot.JPG";
 function GamesList(){
 return(
     <div>
-        
-        <Container style={{width: "96%", margin: "2%"}}>
+        <Container fluid style={{width: "96%", margin: "2%"}}>
             <Row>
                 <Col>
                     <h1 style={{color: "white", textShadow: "0px 0px 25px #EDC28F, 0 0 5px LightGoldenRodYellow", fontSize: "250%",

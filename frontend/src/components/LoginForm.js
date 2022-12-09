@@ -1,6 +1,9 @@
 import React, {useRef} from 'react';
 import UsernameContext from "../context/UsernameContext";
 
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function LoginForm() {
   const usernameRef = useRef();
@@ -34,12 +37,28 @@ function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="username">Username</label>
-      <input id="username" type="text" ref={usernameRef} required />
-      <label htmlFor="password">Password</label>
-      <input id="password" type="password" ref={passwordRef} required />
-      <button type="submit">Login</button>
+    <Container fluid>
+      <Col>
+        <Row>
+          <label htmlFor="username">Username&emsp;</label>
+          <input id="username" type="text" ref={usernameRef} required />
+        </Row>
+        <br />
+        <Row>
+        <label htmlFor="password">Password&emsp;</label>
+        <input id="password" type="password" ref={passwordRef} required />
+        </Row>
+        <Row style={{textAlign: "center", paddingTop: "5px"}}>
+          <button type="submit">Login</button>
+        </Row>
+      </Col>
+    </Container>
     </form>
+    
+      
+      
+      
+    
   );
 }
 

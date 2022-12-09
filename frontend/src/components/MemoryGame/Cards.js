@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 import Button from "@mui/material/Button";
 import Card from "./Card";
-//import HighScore from "./HighScore";
 
 function Cards() {
   const [moves, setMoves] = useState(0);
@@ -145,7 +144,7 @@ function Cards() {
 
       <div className="bold">
         <Button onClick={restart} variant="outlined" className="button">
-          Restart
+          Save Score and Restart
         </Button>
       </div>
     </>

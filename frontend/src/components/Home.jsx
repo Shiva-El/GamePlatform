@@ -17,22 +17,22 @@ function Home() {
     const [username, setUsername] = React.useContext(UsernameContext);
 
     return(
-        <Container>
-            <Row>
-                <Col>
+        <Container fluid style={{width: "100%"}}>
+            <Col style={{width: "100%"}}>
+                <Row style={{width: "100%"}}>
                     <Header />
+                </Row>
+                <Row style={{width: "100%"}}>
                     <HomeLogo />
-                </Col>
-            </Row>
-            <Row>
-                <Col style={{color: "white"}}>
+                </Row>
+                <Row style={{width: "100%", color: "white"}}>
                     <p>{username ? "Welcome " + username + "!" : "Please login!"}</p>
                     <Outlet />
-                </Col>
-            </Row>
-            <Row>
-                <GamesList />
-            </Row>
+                </Row>
+                <Row style={{width: "100%"}}>
+                    <GamesList />
+                </Row>
+            </Col>
         </Container>
     )
 }

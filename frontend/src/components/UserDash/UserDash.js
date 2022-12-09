@@ -1,39 +1,55 @@
-import "../../App.css";
+//Utility
 import React from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+//Components
 import ChangeUsername from "./ChangeUsername";
 import ChangePassword from "./ChangePassword";
+import Header from "../Header";
+//Styling
+import "./UserDash.css";
 import { Button } from "@mui/material";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
-function App() {
+function UserDash() {
 
   return (
-    <>
-      <div className="App">
-        <div className="nav">
-          <Button className="button" variant="outlined">Home</Button>
-          <Button className="button" variant="outlined">Logout</Button>
-        </div>
-        <div>
-          <h1 className="text">User Dashboard</h1>
-
-          <h1 className="text">Profile Picture</h1>
-          <label className="label">Upload Profile Picture: </label>
+    <div className="App">
+    <Header />
+    <Container fluid style={{width: "98%", display: "flex", justifyContent: "center"}}>
+      <Col>
+        <Row>
+          <h1 className="text">&emsp;User Dashboard</h1>
+        </Row>
+        <Row>
+          <h1 className="text">&emsp;Profile Picture</h1>
+          <label className="label">Upload Profile Picture:</label>
           <Button className="button" variant="outlined">
             <input accept="image/*" multiple type="file" />
           </Button>
-          <br></br>
-          <br></br>
-          <div id="user">
-            <ChangeUsername />
-          </div>
-          <div id="pass">
-            <ChangePassword />
-          </div>
-        </div>
-      </div>
-    </>
+        </Row>
+        <Container>
+          <Col>
+            <Row>
+              <ChangeUsername />
+            </Row>
+          </Col>
+          <Col>
+            <Row>
+              &emsp;
+            </Row>
+          </Col>
+          <Col>
+            <Row>
+              <ChangePassword />
+            </Row>
+          </Col>
+        </Container>
+      </Col>
+    </Container>
+    </div>
+          
   );
 }
 
-export default App;
+export default UserDash;

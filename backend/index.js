@@ -151,6 +151,65 @@ app.patch("/leaderboard/:username/minesweeperScore", async (req,
   res.send(results);
   });
 
+//Lyrics score callback
+app.patch("/leaderboard/:username/lyricsScore", async (req,
+  res) => {
+  const username = req.params.username;
+  const lyricsScore = req.body.lyricsScore;
+  const results = await userModel.updateOne({
+  username: username }, { lyricsScore: lyricsScore });
+  console.log("matched: " + results.matchedCount);
+  console.log("modified: " + results.modifiedCount);
+  res.send(results);
+  });
+
+//Memory score callback
+app.patch("/leaderboard/:username/memoryScore", async (req,
+  res) => {
+  const username = req.params.username;
+  const memoryScore = req.body.memoryScore;
+  const results = await userModel.updateOne({
+  username: username }, { memoryScore: memoryScore });
+  console.log("matched: " + results.matchedCount);
+  console.log("modified: " + results.modifiedCount);
+  res.send(results);
+  });
+
+//Flying Bean score callback
+app.patch("/leaderboard/:username/flyingBeanScore", async (req,
+  res) => {
+  const username = req.params.username;
+  const flyingBeanScore = req.body.flyingBeanScore;
+  const results = await userModel.updateOne({
+  username: username }, { flyingBeanScore: flyingBeanScore });
+  console.log("matched: " + results.matchedCount);
+  console.log("modified: " + results.modifiedCount);
+  res.send(results);
+  });
+
+//Password callback
+app.patch("/leaderboard/:username/password", async (req,
+  res) => {
+  const username = req.params.username;
+  const password = req.body.password;
+  const results = await userModel.updateOne({
+  username: username }, { password: password });
+  console.log("matched: " + results.matchedCount);
+  console.log("modified: " + results.modifiedCount);
+  res.send(results);
+  });
+
+//Username callback
+app.patch("/leaderboard/:username/username", async (req,
+  res) => {
+  const username = req.params.username;
+  const results = await userModel.updateOne({
+  username: username }, { username: username });
+  console.log("matched: " + results.matchedCount);
+  console.log("modified: " + results.modifiedCount);
+  res.send(results);
+  });
+
 
 
 app.listen(PORT, () => {

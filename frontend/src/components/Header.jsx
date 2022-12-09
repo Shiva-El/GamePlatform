@@ -10,17 +10,13 @@ import Button from 'react-bootstrap/Button';
 
 function Header(){
     return(
-        <Container>
-            <Row>
-                <Col style={{textAlign: "left"}}>
-                    <Link to="/">
-                        <Button style={{color: "white", textAlign: "center", border: "2px solid #EDC28F", borderRadius: "5px", boxShadow: "2px 2px 15px 5px #EDC28F, 0px 0px 25px 8px sienna inset", padding: "10px", fontWeight: "bold", fontSize: "130%"}}>
-                             Home
-                        </Button>
-                    </Link>
-                </Col>
-            </Row>
-        </Container>
+        <div style={{width: "100%", display: "flex", justifyContent: "left"}}>
+            <Link to="/">
+                <Button style={{color: "white", border: "2px solid #EDC28F", borderRadius: "5px", boxShadow: "2px 2px 15px 5px #EDC28F, 0px 0px 25px 8px sienna inset", padding: "20%", fontWeight: "bold", fontSize: "150%"}}>
+                    Home
+                </Button>
+            </Link>
+        </div>
     )
 }
 

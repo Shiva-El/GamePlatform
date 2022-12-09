@@ -15,7 +15,7 @@ import Button from 'react-bootstrap/Button';
 //Component Imports
 import Cell from './Cell';
 import Header from '../Header';
-import Leaderboard from '../LeaderboardMine';
+import Leaderboard from './LeaderboardMine';
 
 const Board = () => {
 //Specify the parameters of the gameboard
@@ -144,7 +144,7 @@ const [player, setPlayer] = useState([]);
     function SaveScore(){
         const username = JSON.parse(localStorage.getItem('username'));
         console.log({username}.username);
-        let savedScore = {score}.score + 1;
+        let savedScore = {score}.score;
         console.log({savedScore}.savedScore);
         fetch("http://localhost:3001/leaderboard/"+{username}.username+"/minesweeperScore", 
             {method: "PATCH",
