@@ -10,20 +10,8 @@ import UsernameContext from "../../context/UsernameContext";
 import Typography from "@mui/material/Typography";
 
 const useStyles = makeStyles({
-    grid:{
-    height: "100vh",
-      backgroundColor: 'black',
-  },
-  // grids: {
-  //     border: '4px solid green',
-  // },
-    lyric:{
-      fontSize: '2.4rem',
-  },
+  grid:{height: "80vh"},
 });
-
-
-
 
 function LyricsGame(props) {
   const [username, setUsername] = React.useContext(UsernameContext);
@@ -78,28 +66,25 @@ function LyricsGame(props) {
   return (
     <div>
       <Header />
-      <Grid container spacing={2} className={classes.grid} style={{width: "96%", marginLeft: "2%", marginBottom: "2%"}}>
-        <Grid item xs={12}></Grid>
-        <Grid item xs={8} className={classes.grids}>
-          <div></div>
-        </Grid>
-        <Grid item xs={4} className={classes.grids}>
+      <Grid container className={classes.grid} style={{width: "96%", marginLeft: "2%", marginBottom: "2%"}}>
+        <Grid style={{display: "flex", justifyContent: "right"}} item xs={12}>
           <Scores correct={userState?.correct} wrong={userState?.wrong} />
         </Grid>
+        <Grid item xs={12}></Grid>
         {userState?.finished ? 
           <Typography sx={{ color: "white" }} variant="h4">
             You have answered all!
           </Typography>
           :
           <>
-            <Grid item xs={6} className={classes.grids}>
+            <Grid item xs={6}>
             <VideoPlayer className={classes.component}
                 videoId={lyric.video.videoId}
                 start={lyric.video.start}
                 end={lyric.video.end}
               />
             </Grid>
-            <Grid item xs={6} className={classes.grids}>
+            <Grid item xs={6}>
               <Question
                 lyric={lyric.lyric}
                 choices={lyric.choices}
@@ -107,10 +92,10 @@ function LyricsGame(props) {
                 onOptionClicked={onOptionClicked}
               ></Question>
             </Grid>
-            <Grid item xs={6} className={classes.grids}>
+            <Grid item xs={6}>
               <SongTitle title={lyric.title} singer={lyric.singer} />
             </Grid>
-            <Grid item xs={6} className={classes.grids}></Grid>
+            <Grid item xs={6}></Grid>
           </>}
       </Grid>
     </div>
