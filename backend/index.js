@@ -71,7 +71,18 @@ app.post("/users/register", async (request, response) => {
       } else {
         const hashedPassword = await bcrypt.hash(password, saltRounds);
         console.log("Registering username " + username);
-        const userToSave = { username: username, password: hashedPassword };
+        const userToSave = { 
+          username: username, 
+          password: hashedPassword,
+          minesweeperScore: 0,
+          memoryScore: 0,
+          flyingBeanScore: 0,
+          lyrics: {
+            lastLyricId: 0,
+            correct: 0,
+            wrong: 0
+          }
+        };
         await userModel.create(userToSave);
         response.send({ success: true });
         return;
