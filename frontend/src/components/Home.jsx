@@ -5,16 +5,21 @@ import {Outlet} from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
+import { makeStyles} from '@mui/styles';
 //Component Imports
 import Header from './Header';
 import HomeLogo from './HomeLogo';
 import GamesList from './GamesList';
 import UsernameContext from "../context/UsernameContext";
 
+const useStyles = makeStyles({
+    label: {color: "white", textAlign: "center", padding: "10px", fontWeight: "bold", fontSize: "130%"},
+  });
 
 function Home() {
     const [username, setUsername] = React.useContext(UsernameContext);
+
+    const classes = useStyles();
 
     return(
         <Container>
@@ -25,8 +30,8 @@ function Home() {
                 </Col>
             </Row>
             <Row>
-                <Col style={{color: "white"}}>
-                    <p>{username ? "Welcome " + username + "!" : "Please login!"}</p>
+                <Col>
+                    <label className={classes.label}>{username ? "Welcome " + username + "!" : "Please login!"}</label>
                     <Outlet />
                 </Col>
             </Row>
