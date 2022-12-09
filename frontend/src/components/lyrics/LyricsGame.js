@@ -7,7 +7,7 @@ import Grid from "@mui/material/Grid";
 import { makeStyles } from '@mui/styles';
 import Header from "../Header.jsx";
 import UsernameContext from "../../context/UsernameContext";
-
+import Typography from "@mui/material/Typography";
 
 const useStyles = makeStyles({
     grid:{
@@ -27,62 +27,91 @@ const useStyles = makeStyles({
 
 function LyricsGame(props) {
   const [username, setUsername] = React.useContext(UsernameContext);
-  const [score, setScore] = useState({ correct: 0, wrong: 0 });
-  const [data, setData] = useState({
-    choices: [],
-    video: {},
-  });
+  const [userState, setUserState] = useState();
+  const [lyric, setLyric] = useState({choices: [], video: {}});
 
   useEffect(() => {
-    fetch("http://localhost:3001/lyrics/" + username)
+    fetch("http://localhost:3001/users/" + username + "/lyrics")
     .then((response) => response.json())
-    .then((json) => {
-      console.log("json", json);
-      setData(json);
+    .then((userState) => {
+      setUserState(userState);
     });
   }, [])
 
+  useEffect(() => {
+    if (!userState || userState.finished) {
+      return;
+    }
+    const lyricId = userState.lastLyricId + 1;
+    console.log(lyricId);
+    fetch("http://localhost:3001/lyrics/" + lyricId)
+    .then((response) => response.json())
+    .then((lyric) => {
+      setLyric(lyric);
+    }).catch(function(){
+      setUserState({...userState, finished: true})
+    })
+  }, [userState])
+
   function onOptionClicked(optionIndex) {
-    let { correct, wrong } = score;
-    if (optionIndex === data.correctAnswer) {
+    let {correct, wrong} = userState;
+    if (optionIndex === lyric.correctChoice) {
       correct++;
     } else {
       wrong++;
     }
-    setScore({ correct, wrong });
+    const newState = {lastLyricId: lyric.lyricId, correct, wrong}
+    const dataToPost = {
+      method: 'PATCH',
+      body: JSON.stringify(newState),
+      headers: {
+        "Content-type": "application/json;charset=UTF-8",
+      },
+    }
+    fetch('http://localhost:3001/users/' + username + "/lyrics", dataToPost)
+      .then(() => {
+        setUserState(newState);
+      })
   }
 
   const classes = useStyles(props);
   return (
     <div>
       <Header />
-    <Grid container spacing={2} className={classes.grid} style={{width: "96%", marginLeft: "2%", marginBottom: "2%"}}>
+      <Grid container spacing={2} className={classes.grid} style={{width: "96%", marginLeft: "2%", marginBottom: "2%"}}>
         <Grid item xs={12}></Grid>
         <Grid item xs={8} className={classes.grids}>
           <div></div>
         </Grid>
         <Grid item xs={4} className={classes.grids}>
-          <Scores score={score} />
+          <Scores correct={userState?.correct} wrong={userState?.wrong} />
         </Grid>
-        <Grid item xs={6} className={classes.grids}>
-        <VideoPlayer className={classes.component}
-            url={data.video.url}
-            start={data.video.start}
-            end={data.video.end}
-          />
-        </Grid>
-        <Grid item xs={6} className={classes.grids}>
-          <Question
-            lyric={data.lyric}
-            choices={data.choices}
-            correctAnswer={data.correctAnswer}
-            onOptionClicked={onOptionClicked}
-          ></Question>
-        </Grid>
-        <Grid item xs={6} className={classes.grids}>
-          <SongTitle title={data.title} singer={data.singer} />
-        </Grid>
-        <Grid item xs={6} className={classes.grids}></Grid>
+        {userState?.finished ? 
+          <Typography sx={{ color: "white" }} variant="h4">
+            You have answered all!
+          </Typography>
+          :
+          <>
+            <Grid item xs={6} className={classes.grids}>
+            <VideoPlayer className={classes.component}
+                videoId={lyric.video.videoId}
+                start={lyric.video.start}
+                end={lyric.video.end}
+              />
+            </Grid>
+            <Grid item xs={6} className={classes.grids}>
+              <Question
+                lyric={lyric.lyric}
+                choices={lyric.choices}
+                correctAnswer={lyric.correctAnswer}
+                onOptionClicked={onOptionClicked}
+              ></Question>
+            </Grid>
+            <Grid item xs={6} className={classes.grids}>
+              <SongTitle title={lyric.title} singer={lyric.singer} />
+            </Grid>
+            <Grid item xs={6} className={classes.grids}></Grid>
+          </>}
       </Grid>
     </div>
   );

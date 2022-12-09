@@ -1,17 +1,34 @@
+import YouTube from 'react-youtube';
+
 function VideoPlayer(props) {
-//   let { url, start, end } = props;
+  let { videoId, start, end } = props;
+  const opts = {
+    height: '315',
+    width: '560',
+    playerVars: {
+      autoplay: 1,
+      start: start,
+      end: end,
+      controls: 0,
+      disablekb: 1,
+      modestbranding: 1,
+      cc_load_policy: 3,
+      iv_load_policy: 3
+    },
+    modestbranding: 1,
+  };
+
+  function onStateChange(event) {
+    if (event.data === 0) { // ended
+      setTimeout(() => {
+        // event.target.setVolume(0);
+        event.target.seekTo(start);
+        event.target.playVideo();
+      }, 5000)
+    }
+  }
   return (
-    
-      <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/4NRXx6U8ABQ?controls=0&amp;start=145"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
-  
+    <YouTube key={videoId} videoId={videoId} opts={opts} onStateChange={onStateChange} />
   );
 }
 

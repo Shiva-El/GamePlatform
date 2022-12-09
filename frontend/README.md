@@ -3,6 +3,7 @@ Material UI: npm install material-ui \
 React Router: npm i react-router-dom \
 Bootstrap: npm install react-bootstrap bootstrap \
 Immer: npm install react-immer
+Youtube: npm install react-youtube
 
 # Required Modules for backend
 Mongoose: npm i express body-parser cors mongoose dotenv 

@@ -60,7 +60,6 @@ function Signup() {
         </Row>
         <Row>
             <HomeLogo />
-            <h2> signup </h2>
         </Row>
     </Col>
     <Col style={{color: "white", position: "relative", margin: "auto" }}>

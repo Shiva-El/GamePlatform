@@ -11,6 +11,8 @@ import flag from "../images/Flag.png";
 import nug from "../images/Gold Nug.png";
 import gotNug from "../images/GotNug.png";
 import SandsweeperScreenshot from "../images/SandSweeperScreenshot.JPG";
+import MemoryHome from "../images/MemoryHome.png";
+import FlyingBeanHome from "../images/FlyingBeanHome.png";
 
 function GamesList(){
 return(
@@ -32,7 +34,7 @@ return(
                                     Description
                                 </p>
                             </td>
-                            <td style={{width: "49%", padding: "1%"}}>
+                            <td style={{width: "49%", padding: "1%", width: "90%"}}>
                                 <img src="" alt="Screenshot" />
                             </td>
                         </tr>
@@ -62,13 +64,14 @@ return(
                     <table style={{width: "100%"}}>
                         <tr>
                             <td style={{width: "49%", padding: "1%"}}>
-                                <h2 style={{textAlign: "left", textDecoration: "underline"}}> Flying Bean </h2><Link to="/"><Button style={{color: "SaddleBrown", textAlign: "center", border: "2px solid #EDC28F", borderRadius: "5px", boxShadow: "2px 2px 15px 5px #EDC28F, 0px 0px 15px 5px #EDC28F inset", padding: "10px", fontWeight: "bold", fontSize: "130%"}}>Play!</Button></Link>
+                                <h2 style={{textAlign: "left", textDecoration: "underline"}}> Flying Bean </h2><Link to="/flyingBean"><Button style={{color: "SaddleBrown", textAlign: "center", border: "2px solid #EDC28F", borderRadius: "5px", boxShadow: "2px 2px 15px 5px #EDC28F, 0px 0px 15px 5px #EDC28F inset", padding: "10px", fontWeight: "bold", fontSize: "130%"}}>Play!</Button></Link>
                                 <p style={{textAlign: "left", marginLeft: "2%"}}>
-                                    Description
+                                    Reminiscent of the original viral hit Flappy Bird, FlyingBean is an equally frustrating but addictive clone. If it’s not broken, don’t fix it !
+
                                 </p>
                             </td>
-                            <td style={{width: "49%", padding: "1%"}}>
-                                <img src="" alt="Screenshot" />
+                            <td style={{width: "49%", padding: "1%", }}>
+                                <img src={FlyingBeanHome} alt="Screenshot" style={{width: "90%"}} />
                             </td>
                         </tr>
                     </table>
@@ -83,33 +86,13 @@ return(
                                 </p>
                             </td>
                             <td style={{width: "49%", padding: "1%"}}>
-                                <img src="" alt="Screenshot" />
+                                <img src={MemoryHome} alt="Screenshot" style={{width: "90%"}}/>
                             </td>
                         </tr>
                     </table>
                 </Col>
             </Row>
         </Container>
-
-
-{/*Alternative horizontal orientation for game boxes
-         <table style={{width: "96%", margin: "2%"}}>
-            <tr>
-                <td style={{color: "yellow", textAlign: "center", border: "2px solid yellow", boxShadow: "2px 2px 15px 5px yellow, 2px 2px 15px 5px yellow inset", width: "25%"}}>
-                    
-                </td>
-                <td style={{color: "white", textAlign: "center", border: "2px solid white", boxShadow: "2px 2px 15px 5px white, 2px 2px 15px 5px white inset", width: "25%"}}>
-                    
-                </td>
-                <td style={{color: "white", textAlign: "center", border: "2px solid white", boxShadow: "2px 2px 15px 5px white, 2px 2px 15px 5px white inset", width: "25%"}}>
-                    
-                </td>
-                <td style={{color: "white", textAlign: "center", border: "2px solid white", boxShadow: "2px 2px 15px 5px white, 2px 2px 15px 5px white inset", width: "25%"}}>
-                     
-                </td>
-            </tr>
-        </table>
-*/}
     </div>
                    
                 
