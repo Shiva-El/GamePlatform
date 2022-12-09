@@ -11,6 +11,7 @@ import flag from "../images/Flag.png";
 import nug from "../images/Gold Nug.png";
 import gotNug from "../images/GotNug.png";
 import SandsweeperScreenshot from "../images/SandSweeperScreenshot.JPG";
+import lyricsScreenshot from "../images/lyrics.png";
 
 function GamesList(){
 return(
@@ -30,11 +31,11 @@ return(
                             <td style={{width: "49%", padding: "1%"}}>
                             <h2 style={{textAlign: "left", textDecorationLine: "underline"}}>Finish the Lyrics</h2><Link to="/lyrics"><Button style={{color: "darkRed", textAlign: "center", border: "2px solid red", borderRadius: "5px", boxShadow: "2px 2px 15px 5px #EDC28F, 0px 0px 15px 5px red inset", padding: "10px", fontWeight: "bold", fontSize: "130%"}}>Play!</Button></Link>
                                 <p style={{textAlign: "left", marginLeft: "2%"}}>
-                                    Description
+                                    Are you able to remember all the lyrics?
                                 </p>
                             </td>
                             <td style={{width: "49%", padding: "1%"}}>
-                                <img src="" alt="Screenshot" />
+                                <img src={lyricsScreenshot} alt="Screenshot" style={{width: "90%"}} />
                             </td>
                         </tr>
                     </table>
