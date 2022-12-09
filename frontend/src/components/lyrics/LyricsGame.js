@@ -94,7 +94,7 @@ function LyricsGame(props) {
           <>
             <Grid item xs={6} className={classes.grids}>
             <VideoPlayer className={classes.component}
-                url={lyric.video.url}
+                videoId={lyric.video.videoId}
                 start={lyric.video.start}
                 end={lyric.video.end}
               />
