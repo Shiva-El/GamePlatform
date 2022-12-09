@@ -36,7 +36,7 @@ const LyricSchema = new mongoose.Schema({
   choices: [String],
   correctChoice: Number,
   video: {
-    url: String,
+    videoId: String,
     start: Number,
     end: Number,
   },
