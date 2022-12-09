@@ -16,7 +16,7 @@ const saltRounds = 10;
 
 app.use(cors()); // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 
-/*
+
 mongoose.connect(
   "mongodb+srv://mongouser:" +
     process.env.MONGODB_PWD +
@@ -26,15 +26,15 @@ mongoose.connect(
     useUnifiedTopology: true,
   }
 );
-*/
 
-//Matthew Connection
+
+/*Matthew Connection
 mongoose.connect("mongodb+srv://mongouser:GgkrVKWtGQXqEEOF@cluster0.k6kxnoy.mongodb.net/myFirstDb?retryWrites=true&w=majority",
   {
     useNewUrlParser   : true,
     useUnifiedTopology: true,
   });
-//Matthew Connection end
+*///Matthew Connection end
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "Connection error: "));
@@ -98,7 +98,7 @@ app.post("/users/login", async (request, response) => {
         response.send({ success: false });
         return;
       } else {
-        const isSame = /*await bcrypt.compare(password, user.password);*/ true;
+        const isSame = await bcrypt.compare(password, user.password); //true;
         if (isSame) {
           console.log("Successful login");
           response.send({ success: true });
@@ -129,8 +129,18 @@ app.get('/leaderboard', async (req, res) => {
   res.send(users);
   });
 
+/* An API get request using URL path parameters
+to /users/:username */
+app.get("/leaderboard/:username", async (req, res) => {
+  const username = req.params.username;
+  const user = await userModel.findOne({
+  username: username });
+  res.send(user);
+  });
+
+
 //Minesweeper score callback
-app.patch("/users/:username/minesweeperScore", async (req,
+app.patch("/leaderboard/:username/minesweeperScore", async (req,
   res) => {
   const username = req.params.username;
   const minesweeperScore = req.body.minesweeperScore;
@@ -140,6 +150,8 @@ app.patch("/users/:username/minesweeperScore", async (req,
   console.log("modified: " + results.modifiedCount);
   res.send(results);
   });
+
+
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}!`);

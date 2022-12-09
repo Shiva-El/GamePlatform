@@ -1,4 +1,4 @@
-import "./App.css";
+import "../../App.css";
 import React from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import ChangeUsername from "./ChangeUsername";

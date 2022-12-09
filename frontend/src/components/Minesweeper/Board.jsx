@@ -79,6 +79,7 @@ const scoreStyle = {
 }
 
 const [gameStatus, setGameStatus] = useState("Dig to unearth gold nuggets! Careful for snakes!");
+const [player, setPlayer] = useState([]);
 
 //Player Inputs
     //Left Click
@@ -99,7 +100,12 @@ const [gameStatus, setGameStatus] = useState("Dig to unearth gold nuggets! Caref
             //If the space has not been clicked before, add point
             if(!draft[x][y].isSnake && draft[x][y].isPoint){
                 setScore(score + 1);
-                SaveScore();
+                GetScore();
+                console.log(player);
+                if(score > player.minesweeperScore){
+                    SaveScore();
+                }
+                
             }
             //Remove the point from clicked space
             Object.assign(draft[x][y], {isPoint: false});
@@ -108,7 +114,10 @@ const [gameStatus, setGameStatus] = useState("Dig to unearth gold nuggets! Caref
         
 
         if(updatedGrid[x][y].isSnake){
-            SaveScore();
+            GetScore();
+            if(score > player.minesweeperScore){
+                SaveScore();
+            }
             return setGameStatus("Death by Snake! Try a new digsite.");
         }
     };
@@ -135,10 +144,12 @@ const [gameStatus, setGameStatus] = useState("Dig to unearth gold nuggets! Caref
     function SaveScore(){
         const username = JSON.parse(localStorage.getItem('username'));
         console.log({username}.username);
-        fetch("http://localhost:3001/users/"+{username}.username, 
+        let savedScore = {score}.score + 1;
+        console.log({savedScore}.savedScore);
+        fetch("http://localhost:3001/leaderboard/"+{username}.username+"/minesweeperScore", 
             {method: "PATCH",
             body: JSON.stringify({
-                minesweeperScore: {score}
+                minesweeperScore: {savedScore}.savedScore
             }),
             headers: {
                 "Content-type": "application/json;charset=UTF-8",
@@ -146,9 +157,18 @@ const [gameStatus, setGameStatus] = useState("Dig to unearth gold nuggets! Caref
             })
         .then((data) => data.json())
         .then((json) =>
-        alert(JSON.stringify(json)));
+        JSON.stringify(json));
     }
 
+    //Get score
+    function GetScore() {
+        const username = JSON.parse(localStorage.getItem('username'));
+        fetch("http://localhost:3001/leaderboard/"+{username}.username,
+        { method: "GET" })
+        .then((data) => data.json())
+        .then((json) =>
+        setPlayer(json));
+    }
 
     
 //UI

@@ -6,8 +6,7 @@ function Leaderboard() {
     const fetchUsers = () => {
         fetch("http://localhost:3001/leaderboard", { method: "GET" })
         .then((data) => data.json())
-        .then((json) =>  {
-            console.log(json); 
+        .then((json) =>  { 
             setUsers(json);
         });
     };
@@ -33,7 +32,7 @@ function Leaderboard() {
                             {user.username} 
                         </th>
                         <td style={{ textAlign: "left", borderBottom: "1px solid sienna"}}>
-                            &emsp;{user.minesweeper}
+                            &emsp;{user.minesweeperScore}
                         </td>
                     </tr>
                 )
