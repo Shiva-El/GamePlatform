@@ -133,6 +133,20 @@ app.get("/lyrics/:userId", async (req, res) => {
   res.send(lyric);
 });
 
+app.post("/lyrics/:userId", async (req, res) => {
+  const userId = req.params.userId;
+  const user = await userModel.findOne({ username: userId });
+  if (req.body.answer === "correct") {
+    user.lyrics.correct = (user.lyrics.correct ?? 0) + 1;
+  } else{
+    user.lyrics.wrong = (user.lyrics.wrong ?? 0) + 1;
+  }
+  user.lyrics.lastLyricId = (user.lyrics.lastLyricId ?? 0) + 1;
+  await user.save();
+
+  res.send('OK');
+});
+
 //Scoreboard callback
 app.get('/leaderboard', async (req, res) => {
   const users = await userModel.find();
