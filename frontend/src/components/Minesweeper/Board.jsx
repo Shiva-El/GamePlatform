@@ -101,9 +101,12 @@ const [player, setPlayer] = useState([]);
             if(!draft[x][y].isSnake && draft[x][y].isPoint){
                 setScore(score + 1);
                 GetScore();
-                console.log(player);
                 if(score > player.minesweeperScore){
                     SaveScore();
+                }
+                if(score >= 80){
+                    alert("Great job clearing the board!");
+                    setGameStatus("Having dug up all of the gold in the desert, you return home a wealthy and accomplished archaeologist! But perhaps, one day, a new digsite will beckon...");
                 }
                 
             }
@@ -138,13 +141,14 @@ const [player, setPlayer] = useState([]);
         setGameStatus("Dig to unearth gold nuggets! Careful for snakes!");
         setScore(0);
         setGrid(gameboard(setup));
+        window.location.reload(false);
     }
 
     //Save score
     function SaveScore(){
         const username = JSON.parse(localStorage.getItem('username'));
         console.log({username}.username);
-        let savedScore = {score}.score;
+        let savedScore = {score}.score + 1;
         console.log({savedScore}.savedScore);
         fetch("http://localhost:3001/leaderboard/"+{username}.username+"/minesweeperScore", 
             {method: "PATCH",
@@ -183,32 +187,28 @@ const [player, setPlayer] = useState([]);
                         Sand Sweeper
                     </h1>
                 </Col>
-            </Row>
-            <Row>
-                <Col style={{height:"75px"}}>
-                    <table style={{width: "50%", height:"100%", marginLeft: "25%", marginRight: "25%"}}>
+                <Col>
+                    <Row style={{backgroundColor: "white", borderRadius:"10px", padding: "1px 0px 1px 0px", display: "flex", justifyContent: "center", textAlign: "center"}}>
+                        {gameStatus}
+                    </Row>  
+                </Col>
+                <Col style={{display: "flex", justifyContent: "center"}}>
+                    <table style={{width: "50%"}}>
                         <tr>
-                            <td style={{width: "27%"}}>
+                            <td style={{width: "50%", height: "75px"}}>
                                 <div style={scoreStyle}>
                                     &nbsp;{score}
                                 </div>
                             </td>
-                            <td style={{width: "46%", textAlign: "center", height: "100%", overflow: "scroll"}}>
-                                <div style={{backgroundColor: "white", borderRadius:"10px", padding: "1px 0px 1px 0px"}}>
-                                    {gameStatus}
-                                </div>
-                            </td>
-                            <td style={{width: "27%", textAlign: "center"}}>
-                                <Button variant="primary" onClick={(e)=> newDig(e, setup)}>New Digsite</Button>
+                            <td style={{width: "50%"}}>
+                                <Button variant="primary" onClick={(e)=> newDig(e, setup)} style={{color: "white", textAlign: "center", border: "2px solid #EDC28F", borderRadius: "5px", boxShadow: "2px 2px 15px 5px #EDC28F, 0px 0px 25px 8px sienna inset", padding: "10px", fontWeight: "bold", fontSize: "100%"}}>New Digsite</Button>
                             </td>
                         </tr>
                     </table>
                 </Col>
-            </Row>
-            <Row>
-                <Col style={{paddingTop: "55px"}}>
+                <Col>
                 <div style={{display: 'grid', 
-                    gridTemplateColumns: `repeat(${setup.width}, 50px)`, 
+                    gridTemplateColumns: `repeat(${setup.width}, 3.5%)`, 
                     gridTemplateRows: `repeat(${setup.height}, 50px)`,
                     textAlign: "center", 
                     justifyContent: "center"
@@ -225,7 +225,7 @@ const [player, setPlayer] = useState([]);
                 </Col>
             </Row>
             <Row>
-                <Col style={{marginTop: "10px"}}>
+                <Col>
                     <h1 style={{color: "black", textShadow: "0px 0px 15px #EDC28F, 0 0 3px lightgoldenrodyellow", fontSize: "200%",
                     background: "linear-gradient(to right, transparent, Khaki, transparent)"}}> 
                         Leaderboard

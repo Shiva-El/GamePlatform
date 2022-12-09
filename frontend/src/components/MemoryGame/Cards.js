@@ -5,7 +5,7 @@ import Card from "./Card";
 function Cards() {
   const [moves, setMoves] = useState(0);
   const [clearedCards, setClearedCards] = useState({});
-
+  const [player, setPlayer] = useState([]);
   const [cards, setCards] = useState(
     [
       { id: 0, name: "David Lyon", status: "", img: "/images/coffeebean1.png" },
@@ -100,6 +100,7 @@ function Cards() {
         alert("already matched");
       } else {
         setMoves((moves) => moves + 1);
+        //GetScore();
         if (previousCardState === -1) {
           previousIndex.current = index;
           cards[index].status = "active";
@@ -114,16 +115,56 @@ function Cards() {
       alert("Card already selected");
     }
   };
-
+/*
   const gamecomplete = () => {
     if (Object.keys(clearedCards).length === cards.length) {
-      alert("Game Finished");
+      alert("Game Finished!");
     }
+    
+    if ({moves}.moves < player.memoryScore || player.memoryScore == 0) {
+      SaveScore();
+      console.log("saved");
+    }
+
+    console.log("checked");
   };
 
-  const restart = () => {
+  setInterval(gamecomplete, 1000);
+*/
+  const Restart = () => {
     window.location.reload(false);
   };
+
+  /*Save score
+  function SaveScore(){
+    const username = JSON.parse(localStorage.getItem('username'));
+    let savedScore = {moves}.moves;
+    console.log({savedScore}.savedScore);
+    fetch("http://localhost:3001/leaderboard/"+{username}.username+"/memoryScore", 
+        {method: "PATCH",
+        body: JSON.stringify({
+          memoryScore: {savedScore}.savedScore
+        }),
+        headers: {
+            "Content-type": "application/json;charset=UTF-8",
+        },
+        })
+    .then((data) => data.json())
+    .then((json) =>
+    JSON.stringify(json));
+}
+
+  //Get score
+  function GetScore() {
+    const username = JSON.parse(localStorage.getItem('username'));
+    fetch("http://localhost:3001/leaderboard/"+{username}.username,
+{ method: "GET" })
+.then((data) => data.json())
+.then((json) =>
+setPlayer(json));
+}
+*/
+
 
   return (
     <>
@@ -143,8 +184,9 @@ function Cards() {
       <h2 className="text">Moves: {moves}</h2>
 
       <div className="bold">
-        <Button onClick={restart} variant="outlined" className="button">
-          Save Score and Restart
+        <Button onClick={Restart} variant="outlined" className="button">
+          Restart <br /> 
+          {/*<span style={{fontSize: "70%"}}>(saves your high score!)</span>*/}
         </Button>
       </div>
     </>

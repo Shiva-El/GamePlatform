@@ -11,7 +11,7 @@ import Col from 'react-bootstrap/Col';
 
 function App() {
   return (
-    <div style={{width: "98%", display: "flex", justifyContent: "center"}}>
+    <div>
       <Header/>
       <Container fluid style={{width: "98%", display: "flex", justifyContent: "center"}}>
         <Col>
@@ -23,7 +23,7 @@ function App() {
           </Row>
         </Col>
       </Container>
-      <Leaderboard style={{margin: "40px"}}/>
+      {/*<Leaderboard style={{margin: "40px"}}/>*/}
     </div>
   );
 }
