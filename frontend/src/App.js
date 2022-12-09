@@ -6,6 +6,7 @@ import {Route, Routes} from "react-router-dom";
 import UsernameContext from "./context/UsernameContext";
 import MemoryGame from "./components/MemoryGame/MemoryGame.js";
 import UserDash from "./components/UserDash/UserDash";
+import Signup from "./components/Signup";
 
 function App() {
   const [username, setUsername] = useState(null);
@@ -16,6 +17,7 @@ function App() {
       <UsernameContext.Provider value={usernameValueAndSetterToProvide}>
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/signup" element={<Signup />} />
           <Route path="/userDash" element={<UserDash />} />
           <Route path="/sandsweeper" element={<Board />} />
           <Route path="/lyrics" element={<LyricsGame />} />

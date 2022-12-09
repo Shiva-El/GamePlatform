@@ -210,7 +210,25 @@ app.patch("/leaderboard/:username/username", async (req,
   res.send(results);
   });
 
-
+//Signup callback
+app.post("/leaderboard", async (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+  const minesweeperScore = req.body.minesweeperScore;
+  const lyricsScore = req.body.lyricsScore;
+  const memoryScore = req.body.memoryScore;
+  const flyingBeanScore = req.body.flyingBeanScore;
+  const user = {
+  username: username,
+  password: password,
+  minesweeperScore: minesweeperScore,
+  lyricsScore: lyricsScore,
+  memoryScore: memoryScore,
+  flyingBeanScore: flyingBeanScore
+  };
+  await userModel.create(user);
+  res.send(user);
+  });
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}!`);
